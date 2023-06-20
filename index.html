@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+
+    <h2>
+        Рахунок:<span id="score">0</span>
+    </h2>
+    <button id="addScore">Додати очко</button>
+    <button id="minusScore">Відняти очко</button>
+
+
+<br/><br/>
+
+    <div>
+        <button id="stone">Камінь</button>
+        <button id="scissors">Ножиці</button>
+        <button id="paper">Папір</button>
+    </div>
+
+        <h2 id = "gamer">Обрано гравцем: <span></span></h2>
+        <h2 id = "opponent">Обрано комп’ютером: <span></span></h2>
+
+        <div id = "result"></div>
+
+
+
+    <div id ="timer">
+            5
+    </div>
+
+        <button id="rules">Правила</button>
+        <div id="modal" class="modal">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                 <h2>Правила <span class = "close">X</span></h2>
+                    <ul>
+                        <li>Папір>Камінь</li>
+                        <li>Камінь>Ножиці</li>
+                        <li>Ножиці>Папір</li>
+                    </ul>
+            </div>
+        </div>
+
+
+
+    <script src = "script.js"></script>
+
+</body>
+</html>
