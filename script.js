@@ -24,8 +24,7 @@ let btnOpenRules = document.querySelector("#rules"); // задаємо змін�
 console.dir(btnOpenRules)
 let modal = document.querySelector("#modal"); //задаємо змінну модальному вікну
 let btnModalClose = document.querySelector("#modal .close");  //закрити модальне вікно
-let modalOverlay = document.querySelector(".modal-overlay");  //
-console.dir(modal)
+let modalOverlay = document.querySelector(".modal-overlay");  //накладання модального вікна
 btnOpenRules.onclick = function (){  //створюємо функціонал кнопки відкрити правила
     modal.className = "modal isActive";
 }
@@ -46,17 +45,16 @@ addScore.onclick = vin;  //кнопка додати очко
 
 minusScore.onclick = lose;  //кнопка відняти очко
 //функція вивести зміну очків на екран
-function updateScore (){
+function updateScore (){                    //фунція додавання очків
     let scoreBlock = document.querySelector("#score");
-    scoreBlock.innerText = score;
-    console.dir(scoreBlock);
+    scoreBlock.innerText = score;               //вивести блок з очками
 }
-function vin(){                     //функція додати очко
+function vin(){                     //функція додати очко, якщо переміг
     score = score + 1 ;
     console.dir (score);
     updateScore();
 }
-function lose(){                     //функція відняти очко
+function lose(){                     //функція відняти очко, якщо переміг суперник
     if(score > 0) {
         score = score - 1;
         console.dir(score);
@@ -86,7 +84,7 @@ let gameStarted = false;        // запуск гри : якщо гру не з
  */
 
 
-let selectPlayer = 0;
+let selectPlayer = 0;                       //змінна вибору гравця
 
 btnStone.onclick = function () {                //якщо натиснуто  кнопку   камінь, то
    btnScissors.style.display = "none";                 //сховати кнопку ножиці
@@ -124,13 +122,13 @@ function startGame() {                          //запуск гри
         }
     },1000);
 }
-function resultGame() {
-    let selectOpponent = random( 1, 3);
-    let gamerBlock = document.querySelector("#gamer span");
-    gamerBlock.innerText = selectPlayer;
+function resultGame() {                                 //функція результату гри
+    let selectOpponent = random( 1, 3);             //вибір суперника(рамдомно)
+    let gamerBlock = document.querySelector("#gamer span"); //змінна блок гравця
+    gamerBlock.innerText = selectPlayer;                //показати вибір гравця
 
-    let opponentBlock = document.querySelector("#opponent span");
-    opponentBlock.innerText = selectOpponent;
+    let opponentBlock = document.querySelector("#opponent span");       //змінна блок суперника
+    opponentBlock.innerText = selectOpponent;           //показати вибір суперника
 
     /**
      * 1.Камінь
@@ -143,22 +141,22 @@ function resultGame() {
      * 5.4.2.1. Вивести повідомлення "Ви перемогли"
      * 5.4.3.1 Вивести повідомлення"Переміг суперник"
      */
-    let resultBlock = document.querySelector('#result');
-    if(selectPlayer == selectOpponent)  {
-        resultBlock.innerText = "Нічия";
-    } else if(
-        (selectPlayer == 3 && selectOpponent == 1) ||
-        (selectPlayer == 1 && selectOpponent == 2) ||
-        (selectPlayer == 2 && selectOpponent == 3)
+    let resultBlock = document.querySelector('#result');        //змінна результатів
+    if(selectPlayer == selectOpponent)  {               //якщо вибір гравця = вибору суперника , то
+        resultBlock.innerText = "Нічия";                //резкльтат - нічия
+    } else if(                                          //інакше, якщо
+        (selectPlayer == 3 && selectOpponent == 1) ||       //3Папір>1Камінь
+        (selectPlayer == 1 && selectOpponent == 2) ||          //1Камінь>2Ножиці
+        (selectPlayer == 2 && selectOpponent == 3)              //2Ножиці>3Папір, то
 ){
-        resultBlock.innerText = "Ти переміг";
+        resultBlock.innerText = "Ти переміг";               //резкльтат ти переміг, додається очко
         vin();
 
-    } else {resultBlock.innerText = "Опонент переміг";
-        lose();
+    } else {resultBlock.innerText = "Опонент переміг";          //інші варіанти, то переміг суперник
+        lose();                                                 //мінус очко
     }
 
-    endGame()
+    endGame()                                                       //кінець гри
 }
 function endGame() {                                        //функція завершення гри
     gameStarted = false;                                          //якщо гра не запущено :
@@ -170,7 +168,7 @@ function endGame() {                                        //функція з�
     timerBlock.style.display = "none";                              //прибрати таймер з дисплея
 }
 
-function random(min, max) {
+function random(min, max) {                 //рандомний вибір , функція
     // случайное число от min до (max+1)
     let rand = min + Math.random() * (max + 1 - min);
     return Math.floor(rand);
